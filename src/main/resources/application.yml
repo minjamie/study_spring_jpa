@@ -11,3 +11,5 @@ spring:
         show_sql: true
         format_sql: true
       database-platform : org.hibernate.dialect.MySQL8Dialect
+    profiles:
+      active: local
