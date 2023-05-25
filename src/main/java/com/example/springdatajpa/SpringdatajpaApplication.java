@@ -20,6 +20,7 @@ import javax.persistence.EntityManagerFactory; // javax.persistence : JPA API
 import javax.persistence.EntityTransaction;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
 public class SpringdatajpaApplication implements CommandLineRunner {
@@ -90,11 +91,19 @@ public class SpringdatajpaApplication implements CommandLineRunner {
 //		}
 
 		// 게시물 100건인 경우 게시물 100건 가지고 오는 쿼리 1개 / 100 * 2번의 사용자, 권한 정보가 가져오는 쿼리 실행 > 즉 201번 실행 = 1+N 문제
-		List<Board> all = boardRepository.findAll(); // select * from  board
-		for (Board board: all
-			 ) {
-			System.out.println(board); // board.toString() board user정보 가지고 오기위해 select * from user, select * from user_role, role 즉 2번의 쿼리가 실행
-			System.out.println(board.getUser());
-		}
+//		List<Board> all = boardRepository.getBoards(); // select * from  board
+//		for (Board board: all
+//			 ) {
+//			System.out.println(board); // board.toString() board user정보 가지고 오기위해 select * from user, select * from user_role, role 즉 2번의 쿼리가 실행
+//			System.out.println(board.getUser());
+//		}
+
+//		Board board = boardRepository.findById(6).get();
+//		System.out.println(board);
+//		System.out.println(board.getUser()); // lazy로 새로운 SQL 실행
+
+		Long boardCount = boardRepository.getBoardCount();
+		System.out.println(boardCount);
+
 	}
 }

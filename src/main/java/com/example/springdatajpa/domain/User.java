@@ -16,7 +16,6 @@ import java.util.Set;
 @NoArgsConstructor // 기본생성자가 필요
 @Setter
 @Getter
-@ToString
 public class User {
     @Id // 이 필드 Table의 PK
     @Column(name="user_id")
@@ -41,6 +40,17 @@ public class User {
         inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     Set<Role> roles = new HashSet<>();
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", regdate=" + regdate +
+                '}';
+    }
 }
 
 // User --> Roles 단방향
